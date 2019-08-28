@@ -44,9 +44,11 @@ class BuildingTest < Minitest::Test
     assert_equal 0, @building.average_rent
   end
 
-  def test_it_knows_renter_with_highest_rent
+  def test_renter_with_highest_rent_is_nil_if_no_renters
     assert_nil @building.renter_with_highest_rent
+  end
 
+  def test_it_knows_renter_with_highest_rent
     add_spencer_to_b2
     add_units_a1_and_b2
 
@@ -57,9 +59,11 @@ class BuildingTest < Minitest::Test
     assert_equal @jessie, @building.renter_with_highest_rent
   end
 
-  def test_it_displays_hash_of_annual_rent_by_renter_name
+  def test_empty_hash_is_returned_for_annual_breakdown_if_no_renters
     assert_equal Hash.new, @building.annual_breakdown
+  end
 
+  def test_it_displays_hash_of_annual_rent_by_renter_name
     add_spencer_to_b2
     add_units_a1_and_b2
 
