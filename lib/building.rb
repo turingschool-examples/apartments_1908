@@ -13,7 +13,18 @@ class Building
     rents = @units.map do |units|
       units.monthly_rent
     end
-    rents.sum.fdiv(rents.length).round(1) 
+    rents.sum.fdiv(rents.length).round(1)
   end
 
+  def renter_with_highest_rent
+    occupied_units = @units.find_all do |unit|
+      unit.renter != nil
+    end
+
+    highest_rent = occupied_units.max_by do |unit|
+      unit.monthly_rent
+    end
+
+    highest_rent.renter
+  end
 end
