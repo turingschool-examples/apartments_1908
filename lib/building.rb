@@ -1,5 +1,3 @@
-require 'pry'
-
 class Building
   attr_reader :units
 
@@ -19,13 +17,25 @@ class Building
     count.to_f / @units.length
   end
 
-  def renter_with_highest_rent
+  def rented_units
     rented = @units.find_all do |unit|
       unit.renter != nil
     end
+  end
 
+  def renter_with_highest_rent
+    rented = rented_units
     rented.max_by do |rented_unit|
       rented_unit.monthly_rent
     end.renter
+  end
+
+  def annual_breakdown
+    breakdown = Hash.new
+    rented = rented_units
+    rented.each do |unit|
+      breakdown[unit.renter.name] = unit.monthly_rent * 12
+    end
+    breakdown
   end
 end
