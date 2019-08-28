@@ -8,4 +8,8 @@ class Apartment
     @bedrooms = hash[:bedrooms]
     @renter = renter
   end
+
+  def add_renter(renter)
+    @renter = renter
+  end
 end
