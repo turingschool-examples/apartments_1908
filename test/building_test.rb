@@ -7,6 +7,7 @@ require 'minitest/pride'
 class TestBuilding < Minitest::Test
   def setup
     @jessie = Renter.new("Jessie")
+    @spencer = Renter.new("Spencer")
     @a1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     @b2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
     @building = Building.new
@@ -35,5 +36,14 @@ class TestBuilding < Minitest::Test
     @building.add_unit(@b2)
 
     assert_equal 1099.5, @building.average_rent
+  end
+
+  def test_it_can_identify_highest_paying_renter
+    @a1.add_renter(@jessie)
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+
+    assert_equal @jessie, @building.highest_rent
   end
 end

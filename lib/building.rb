@@ -18,4 +18,16 @@ class Building
     end
     total_rent / count.to_f
   end
+
+  def highest_rent
+    highest_rent = 0
+    highest_renter = nil
+    @units.each do |unit|
+      if unit.monthly_rent > highest_rent
+        highest_rent = unit.monthly_rent
+        highest_renter = unit.renter
+      end
+    end
+    highest_renter
+  end
 end
