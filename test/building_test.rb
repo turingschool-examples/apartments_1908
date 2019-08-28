@@ -33,4 +33,16 @@ class BuildingTest < Minitest::Test
     assert_equal 1099.5, @building.average_rent
   end
 
+  def test_renter_with_highest_rent
+    spencer = Renter.new("Spencer")
+    jessie = Renter.new("Jessie")
+    @b2.add_renter(spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+
+    assert_equal spencer, @building.renter_with_highest_rent
+    @a1.add_renter(jessie)
+    assert_equal jessie, @building.renter_with_highest_rent
+  end
+
 end
