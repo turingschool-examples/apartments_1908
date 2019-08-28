@@ -10,7 +10,16 @@ class Building
   end
 
   def average_rent
-    (@units[0].monthly_rent.to_f + @units[1].monthly_rent) / 2
+    # to make dynameic we iteratie through the @units and put their rent in an array and then average that array.
+    rent_array = []
+    @units.each do |unit|
+      rent_array << unit.monthly_rent.to_f
+    end
+    (rent_array.sum)/rent_array.count
   end
+  
+  # def renter_with_highest_rent
+  #   @units.max_by
+  # end
 
 end
