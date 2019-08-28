@@ -2,6 +2,7 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/building'
 require './lib/apartment'
+require 'pry'
 
 class BuildingTest < Minitest::Test
   def setup
@@ -22,6 +23,8 @@ class BuildingTest < Minitest::Test
   end
 
   def test_it_can_find_average_rent
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
     expected = 1099.5
     assert_equal expected, @building.average_rent
   end
