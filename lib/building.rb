@@ -13,4 +13,11 @@ class Building
     average_rent = @units.sum { |unit| unit.monthly_rent }
     average_rent /= @units.length.to_f
   end
+
+  def renter_with_highest_rent
+    max_unit = @units.max_by do |unit|
+      unit.renter != nil ? unit.monthly_rent : 0
+    end
+    max_unit.renter
+  end
 end
