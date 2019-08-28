@@ -1,3 +1,5 @@
+require 'pry'
+
 class Building
   attr_reader :units
 
@@ -6,6 +8,14 @@ class Building
   end
 
   def add_unit(unit)
-    @units << unit
+    @units.push(unit)
+  end
+
+  def average_rent
+    count = 0
+    @units.each do |unit|
+      count += unit.monthly_rent
+    end
+    count.to_f / @units.length
   end
 end
