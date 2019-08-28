@@ -32,5 +32,19 @@ class Building
   end
 
 
+  def annual_breakdown
+    breakdown_hash = {}
+    @units.each do |unit|
+      rented_apartments_array = []
+      if unit.renter != nil
+        rented_apartments_array << unit
+        rented_apartments_array.each do |apartment|
+        breakdown_hash[apartment.renter.name] = (apartment.monthly_rent * 12)
+        end
+      end
+    end
+    return breakdown_hash
+  end
+
 
 end

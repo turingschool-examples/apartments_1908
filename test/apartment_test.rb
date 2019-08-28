@@ -38,7 +38,6 @@ class ApartmentTest < Minitest::Test
   def test_apartment_can_add_a_renter
     @a1.add_renter(@jessie)
     assert_equal @jessie, @a1.renter
-    binding.pry
   end
 
 end
