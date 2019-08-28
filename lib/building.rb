@@ -1,3 +1,6 @@
+require './lib/renter'
+require './lib/apartment'
+
 class Building
   attr_reader :units
 
@@ -29,5 +32,15 @@ class Building
       end
     end
     highest_renter
+  end
+
+  def annual_breakdown
+    breakdown = {}
+    @units.each do |unit|
+      if unit.renter != nil
+        breakdown[unit.renter.name] = unit.monthly_rent * 12
+      end
+    end
+    breakdown
   end
 end

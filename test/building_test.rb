@@ -10,6 +10,7 @@ class TestBuilding < Minitest::Test
     @spencer = Renter.new("Spencer")
     @a1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     @b2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+    @c3 = Apartment.new({number: "C3", monthly_rent: 1500, bathrooms: 2, bedrooms: 2})
     @building = Building.new
   end
 
@@ -45,5 +46,15 @@ class TestBuilding < Minitest::Test
     @building.add_unit(@b2)
 
     assert_equal @jessie, @building.highest_rent
+  end
+
+  def test_it_can_generate_an_annual_breakdown
+    @a1.add_renter(@jessie)
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    @building.add_unit(@c3)
+
+    assert_equal ({"Jessie"=>14400, "Spencer"=>11988}), @building.annual_breakdown
   end
 end
