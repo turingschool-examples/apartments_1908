@@ -42,5 +42,15 @@ class Building
     highest_rent_unit.renter
   end
 
-
+  def annual_breakdown
+    annual_amount = 0
+    renter = nil
+    the_annual_breakdown = {}
+    @active_units.each do |unit|
+    annual_amount = unit.monthly_rent * 12
+    renter = unit.renter
+    the_annual_breakdown << {renter.to_s => annual_amount}
+    end
+  end
+  the_annual_breakdown
 end
