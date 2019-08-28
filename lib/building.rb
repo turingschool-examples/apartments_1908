@@ -27,4 +27,22 @@ class Building
     end
     highest_rent.renter
   end
+
+  def annual_breakdown
+    annual_rent = Hash.new
+    units_in_use.each do |unit|
+      annual_rent[unit.renter.name] = unit.monthly_rent * 12
+  end
+  annual_rent
+end
+
+
+
+#-------------------------
+  def units_in_use
+    units_in_use = @units.find_all do |unit|
+      unit.renter != nil
+    end
+  end
+
 end
