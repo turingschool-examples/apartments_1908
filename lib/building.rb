@@ -15,6 +15,9 @@ class Building
   end
 
   def renter_with_highest_rent
-    true
+    max_unit = @units.max_by do |unit|
+      unit.renter != nil ? unit.monthly_rent : 0
+    end
+    max_unit.renter
   end
 end
