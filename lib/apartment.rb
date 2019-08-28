@@ -9,7 +9,7 @@ class Apartment
     monthly_rent:,
     bathrooms:,
     bedrooms:)
-    
+
     @number = number
     @monthly_rent = monthly_rent
     @bathrooms = bathrooms
