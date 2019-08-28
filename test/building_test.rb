@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/building'
 require './lib/apartment'
 require './lib/renter'
-require 'pry'
 
 class BuildingTest < Minitest::Test
   def setup
@@ -23,6 +22,7 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@a1)
     assert_equal [@a1], @building.units
     @building.add_unit(@b1)
+
     assert_equal [@a1, @b1], @building.units
   end
 
@@ -30,6 +30,7 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@a1)
     @building.add_unit(@b2)
     expected = 1099.5
+
     assert_equal expected, @building.average_rent
   end
 
@@ -44,6 +45,23 @@ class BuildingTest < Minitest::Test
     @a1.add_renter(@jessie)
     @building.renter_with_highest_rent
     expected = @building.renter_with_highest_rent
+
     assert_equal expected, @jessie
+  end
+
+  def test_it_can_provide_annual_breakdown
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    expected = {"Spencer" => 11988}
+    actual = @building.annual_breakdown
+
+    assert_equal expected, actual
+
+    @a1.add_renter(@jessie)
+    actual = @building.annual_breakdown
+    expected = {"Jessie" => 14400, "Spencer" => 11988}
+
+    assert_equal expected, actual
   end
 end
