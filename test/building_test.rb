@@ -20,4 +20,9 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@b1)
     assert_equal [@a1, @b1], @building.units
   end
+
+  def test_it_can_find_average_rent
+    expected = 1099.5
+    assert_equal expected, @building.average_rent
+  end
 end
