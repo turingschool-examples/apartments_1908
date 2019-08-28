@@ -17,9 +17,20 @@ class Building
     end
     (rent_array.sum)/rent_array.count
   end
-  
-  # def renter_with_highest_rent
-  #   @units.max_by
-  # end
+
+  def renter_with_highest_rent
+    @units.each do |unit|
+      rented_apartments = []
+      if unit.renter != nil
+        rented_apartments << unit
+        rented_apartments.max_by do |apartment|
+          apartment.monthly_rent
+          return apartment.renter
+        end
+      end
+    end
+  end
+
+
 
 end
