@@ -19,7 +19,16 @@ class Building
     end
 
     (sum.to_f / @units.length.to_f).round(2)
+  end
 
+  def renter_with_highest_rent
+    units_occupied = @units.find_all {|unit| unit.renter != nil}
+
+    highest_unit = units_occupied.max_by do |unit|
+      unit.monthly_rent
+    end
+
+    highest_unit.renter
   end
 
 end
