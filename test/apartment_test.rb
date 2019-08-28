@@ -18,7 +18,7 @@ class ApartmentTest < Minitest::Test
     assert_equal 1200, @apartment.monthly_rent
     assert_equal 1, @apartment.bathrooms
     assert_equal 1, @apartment.bedrooms
-    assert_equal nil, @apartment.renter #initial attribute
+    assert_nil   @apartment.renter #initial attribute
   end
 
   def test_method_add_renter
