@@ -8,6 +8,8 @@
 * Push your solution to your forked repo
 * Submit a pull request from your repository to this repository
   * Put your name in your PR!
+  * also include the last iteration you finished and where you left off
+    * example: `Joe Smith, finished iteration 3, halfway through 4`
 
 ## Iteration 1
 
