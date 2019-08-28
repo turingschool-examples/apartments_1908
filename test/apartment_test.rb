@@ -29,7 +29,7 @@ class ApartmentTest < Minitest::Test
   def test_add_renter
     @a1.add_renter(@jessie)
 
-    assert_equal @jessie, @a1.renter 
+    assert_equal @jessie, @a1.renter
   end
 
 end
