@@ -8,4 +8,24 @@ attr_reader :units
   def add_units(apartment)
     @units << apartment
   end
+
+  def average_rent
+    rent = []
+    @units.find_all do |unit|
+      rent << unit.monthly_rent
+    end
+
+    sum = 0
+    rent.each do |num|
+      sum += num
+    end
+    x = sum.to_f / 2
+    x
+  end
+
+  def renter_with_highest_rent
+    # binding.pry
+    @units
+  end
+
 end
