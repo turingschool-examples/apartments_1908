@@ -15,4 +15,16 @@ class Building
     end
     total.to_f / @units.length
   end
+
+  def renter_with_highest_rent
+    units_in_use = @units.find_all do |unit|
+      unit.renter != nil
+    end
+
+    highest_rent = units_in_use.max_by do |unit|
+      unit.monthly_rent
+      # binding.pry
+    end
+    highest_rent.renter
+  end
 end

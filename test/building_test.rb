@@ -10,6 +10,8 @@ class BuildingTest < Minitest::Test
     @building = Building.new
     @a1 = Apartment.new({number: "A1", monthly_rent: 1200, bathrooms: 1, bedrooms: 1})
     @b2 = Apartment.new({number: "B2", monthly_rent: 999, bathrooms: 2, bedrooms: 2})
+    @spencer = Renter.new("Spencer")
+    @jessie = Renter.new("Jessie")
   end
 
   def test_existence
@@ -30,5 +32,12 @@ class BuildingTest < Minitest::Test
     @building.add_unit(@a1)
     @building.add_unit(@b2)
     assert_equal 1099.5, @building.average_rent
+  end
+
+  def test_method_renter_with_highest_rent
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    assert_equal @spencer, @building.renter_with_highest_rent
   end
 end
