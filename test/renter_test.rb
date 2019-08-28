@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/renter'
 
-
 class RenterTest < Minitest::Test
   def setup
     @renter = Renter.new("Jessie")
@@ -15,6 +14,4 @@ class RenterTest < Minitest::Test
   def test_it_has_attributes
     assert_equal "Jessie", @renter.name
   end
-
-
 end

@@ -3,7 +3,6 @@ require 'minitest/pride'
 require './lib/apartment'
 require './lib/renter'
 
-
 class ApartmentTest < Minitest::Test
   def setup
     @jessie = Renter.new("Jessie")
@@ -24,7 +23,7 @@ class ApartmentTest < Minitest::Test
 
   def test_it_can_have_a_renter
     @a1.add_renter(@jessie)
+
     assert_equal @jessie, @a1.renter
   end
-
 end
