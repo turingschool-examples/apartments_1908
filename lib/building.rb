@@ -21,4 +21,20 @@ class Building
     end
   end
 
+  def renter_with_highest_rent
+    occupied_units = @units.find_all do |unit|
+      unit.renter
+    end
+
+    max_apt = occupied_units.max_by do |unit|
+      unit.monthly_rent
+    end
+
+    if max_apt
+      max_apt.renter
+    else
+      nil
+    end
+  end
+
 end

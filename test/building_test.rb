@@ -43,7 +43,22 @@ class BuildingTest < Minitest::Test
   def test_average_rent_is_0_if_no_units
     assert_equal 0, @building.average_rent
   end
-  
+
+  def test_it_knows_renter_with_highest_rent
+    assert_nil @building.renter_with_highest_rent
+
+    spencer = Renter.new("Spencer")
+    @b2.add_renter(spencer)
+    add_a1_and_b2
+
+    assert_equal spencer, @building.renter_with_highest_rent
+
+    jessie = Renter.new("Jessie")
+    @a1.add_renter(jessie)
+
+    assert_equal jessie, @building.renter_with_highest_rent
+  end
+
 
   # Helper methods
 
