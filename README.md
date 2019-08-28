@@ -119,7 +119,7 @@ pry(main)> b2.add_renter(spencer)
 
 pry(main)> building.add_unit(a1)    
 
-pry(main)> building.add_unit(b2)    
+pry(main)> building.add_unit(a1)    
 
 pry(main)> building.renter_with_highest_rent
 # => #<Renter:0x00007fa83bc37978...>
