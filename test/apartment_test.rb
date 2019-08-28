@@ -2,7 +2,6 @@ require 'minitest/autorun'
 require 'minitest/pride'
 require './lib/renter'
 require './lib/apartment'
-require 'pry'
 
 class ApartmentTest < Minitest::Test
 
@@ -28,7 +27,7 @@ class ApartmentTest < Minitest::Test
 
   def test_renter_can_be_added
     @apartment.add_renter(@jessie)
-    
+
     assert_equal @jessie, @apartment.renter
   end
 end
