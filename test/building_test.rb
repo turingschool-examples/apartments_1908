@@ -45,4 +45,18 @@ class BuildingTest < Minitest::Test
     assert_equal jessie, @building.renter_with_highest_rent
   end
 
+  def test_its_annual_breakdown
+    spencer = Renter.new("Spencer")
+    jessie = Renter.new("Jessie")
+    @b2.add_renter(spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+
+    assert_equal 1, @building.annual_breakdown.count
+    assert_equal 11988, @building.annual_breakdown["Spencer"]
+    @a1.add_renter(jessie)
+    assert_equal 2, @building.annual_breakdown.count
+    assert_equal 14400, @building.annual_breakdown["Jessie"]
+  end
+
 end
