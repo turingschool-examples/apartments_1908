@@ -22,10 +22,6 @@ class Building
   end
 
   def renter_with_highest_rent
-    occupied_units = @units.find_all do |unit|
-      unit.renter
-    end
-
     max_apt = occupied_units.max_by do |unit|
       unit.monthly_rent
     end
@@ -34,6 +30,25 @@ class Building
       max_apt.renter
     else
       nil
+    end
+  end
+
+  def annual_breakdown
+    annual_rent = {}
+
+    occupied_units.each do |unit|
+      annual_rent[unit.renter.name] = unit.monthly_rent * 12
+    end
+
+    annual_rent
+  end
+
+
+  # Helper methods
+
+  def occupied_units
+    @units.find_all do |unit|
+      unit.renter
     end
   end
 
