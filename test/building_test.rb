@@ -45,6 +45,19 @@ class BuildingTest < Minitest::Test
     assert_equal 1099.5, @building.average_rent
   end
 
+  def test_occupied_units
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+
+    assert_equal [@b2], @building.occupied_units
+
+    @a1.add_renter(@jessie)
+
+    assert_equal [@a1, @b2], @building.occupied_units
+
+  end
+
   def test_renter_with_highest_rent
     @b2.add_renter(@spencer)
     @building.add_unit(@a1)
@@ -55,6 +68,20 @@ class BuildingTest < Minitest::Test
     @a1.add_renter(@jessie)
 
     assert_equal @jessie, @building.renter_with_highest_rent
+  end
+
+  def test_annual_breakdown
+    @b2.add_renter(@spencer)
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    expected1 = {"Spencer" => 11988}
+
+    assert_equal expected1, @building.annual_breakdown
+
+    @a1.add_renter(@jessie)
+    expected2 = {"Jessie" => 14400, "Spencer" => 11988}
+
+    assert_equal expected2, @building.annual_breakdown
 
   end
 
