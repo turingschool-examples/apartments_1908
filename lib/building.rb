@@ -29,4 +29,14 @@ class Building
     end
     renter.renter
   end
+
+  def annual_breakdown
+    renters_with_rent = Hash.new
+    @units.each do |unit|
+      if unit.renter != nil
+        renters_with_rent[unit.renter.name] = (unit.monthly_rent * 12)
+      end
+    end
+    renters_with_rent
+  end
 end

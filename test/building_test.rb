@@ -43,4 +43,13 @@ class BuildingTest < Minitest::Test
     @a1.add_renter(@zac)
     assert_equal @zac, @building.renter_with_highest_rent
   end
+
+  def test_for_monthly_breakdown
+    @building.add_unit(@a1)
+    @building.add_unit(@b2)
+    @b2.add_renter(@david)
+    assert_equal ({"David"=>11988}), @building.annual_breakdown
+    @a1.add_renter(@zac)
+    assert_equal ({"Zac"=>14400, "David"=>11988}), @building.annual_breakdown
+  end
 end
