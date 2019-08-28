@@ -31,4 +31,15 @@ class Building
     highest_unit.renter
   end
 
+  def annual_breakdown
+    units_occupied = @units.find_all {|unit| unit.renter != nil}
+
+    sorted_breakdown = Hash.new
+    units_occupied.each do |unit|
+      sorted_breakdown[unit.renter.name] = (unit.monthly_rent * 12)
+    end
+
+    sorted_breakdown.sort_by {|k, v| v}.to_h
+  end
+
 end
