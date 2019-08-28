@@ -24,8 +24,13 @@ attr_reader :units
   end
 
   def renter_with_highest_rent
-    # binding.pry
-    @units
+    @units.max_by do |unit|
+      occupied = unit.renter != nil
+      binding.pry
+      if !occupied
+        unit.key(unit.monthly_rent)
+      end
+    end
   end
 
 end

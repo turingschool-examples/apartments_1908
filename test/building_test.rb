@@ -31,20 +31,19 @@ class BuildingTest < Minitest::Test
   end
 
   def test_average_rent
-    # skip
     @building.add_units(@a1)
     @building.add_units(@b2)
     @building.units
 
-    # binding.pry
     assert_equal 1099.5, @building.average_rent
   end
 
   def test_one_renter_highest_rent
-    skip
     @b2.add_renter(@spencer)
     @building.add_units(@a1)
     @building.add_units(@b2)
+    # binding.pry
+    @building.units
 
     assert_equal @spencer, @building.renter_with_highest_rent
   end
